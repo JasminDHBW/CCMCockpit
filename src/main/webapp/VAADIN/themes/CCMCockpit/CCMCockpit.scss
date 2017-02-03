@@ -1,0 +1,64 @@
+// If you edit this file you need to compile the theme. See README.md for details.
+
+// Global variable overrides. Must be declared before importing Valo.
+
+// Defines the plaintext font size, weight and family. Font size affects general component sizing.
+$v-font-size: 16px;
+$v-font-weight: 300;
+$v-font-family: "Open Sans", sans-serif;
+
+// Defines the border used by all components.
+//$v-border: 1px solid (v-shade 0.7);
+$v-border-radius: 4px;
+
+// Affects the color of some component elements, e.g Button, Panel title, etc
+$v-background-color: #fff; 
+
+// Affects the color of content areas, e.g  Panel and Window content, TextField input etc
+$v-app-background-color: #fff;
+$v-selection-overlay-background-color: #fff;
+
+//Zusatzstyling
+$v-overlay-shadow: 0 0 0 2px #fff;
+
+$v-app-loading-text: "Bitte warten. Das Costumer Contact Management System wird geladen.";
+
+// Affects the visual appearance of all components
+//$v-gradient: v-linear 8%;
+//$v-bevel-depth: 30%;
+//$v-shadow-opacity: 5%;
+
+// Defines colors for indicating status (focus, success, failure)
+$v-focus-color:#8c0011; //dunkelrot
+$v-friendly-color: #7F7F7F; //grau
+$v-error-indicator-color: #c4272d;//rot
+
+
+@import "../valo/valo.scss";
+
+@mixin CCMCockpit {
+  @include valo;
+  
+//Button Styling
+.v-button{
+
+	border: none;
+	background:#323D43; //dunkelgrau wie auf der Homepage
+	color:#dcdfe0;
+	font-weight:bold;
+	cursor: pointer;
+	white-space: nowrap;
+	margin: 3px 6px 3px;
+	padding:4px;
+	
+  
+  
+}
+
+.v-button-caption{
+ 	font-size: 12pt;
+    font-weight: bold;
+    font-color: #dcdfe0;
+    padding:0px 0px 0px 0px;
+}
+}
