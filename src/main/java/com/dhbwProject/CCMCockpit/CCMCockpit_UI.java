@@ -1,5 +1,7 @@
 package com.dhbwProject.CCMCockpit;
 
+import java.io.IOException;
+
 import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
@@ -22,6 +24,9 @@ import com.vaadin.ui.VerticalLayout;
  */
 @Theme("CCMCockpit")
 public class CCMCockpit_UI extends UI {
+	
+	private Process process_Mysql;
+	private Process process_Apache;
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -32,25 +37,58 @@ public class CCMCockpit_UI extends UI {
     	Button btnsqlaus = new Button();
     	btnsqlaus.setCaption("MySQL starten");
     	btnsqlaus.addClickListener(e->{
-    		//Platz für den Methodenaufruf
+    		
+    			String s = System.getProperty("user.dir");
+    			System.out.println(s);
+    			
+    				String command_Mysql = s +"\\src\\main\\resources\\mysql\\bin\\mysqld.exe";
+    				try {
+						process_Mysql = Runtime.getRuntime().exec(command_Mysql);
+					
+    				
+    				} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+    				
+    			
     	});
     	Button btnsqlein = new Button();
     	btnsqlein.setCaption("MySQL schließen");
     	btnsqlein.addClickListener(e-> {
-    		//Methodenaufruf
+    	
+    			String s = System.getProperty("user.dir");
+    			System.out.println(s);
+    			
+    				String command_Mysql = s +"\\src\\main\\resources\\mysql_stop.bat";
+//    				Process process_Mysql = Runtime.getRuntime().exec(command_Mysql);
+    				process_Mysql.destroy();			
     	});
-    	
-    	
     	//Apache Buttons
     	Button btnapacheein = new Button();
     	btnapacheein.setCaption("Apache starten");
     	btnapacheein.addClickListener(e-> {
-    		//Methodenaufruf
+    		String s = System.getProperty("user.dir");
+    		String command_Apache = s +"\\src\\main\\resources\\apache\\bin\\httpd.exe";
+			try {
+				process_Apache = Runtime.getRuntime().exec(command_Apache);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
     	});
     	Button btnapacheaus = new Button();
     	btnapacheaus.setCaption("Apache schließen");
     	btnapacheaus.addClickListener(e-> {
-    		//Methodenaufruf
+    		String s = System.getProperty("user.dir");
+			String command_Apache= s +"\\src\\main\\resources\\apache_stop.bat";
+			try {
+				Process process_Apache = Runtime.getRuntime().exec(command_Apache);
+//				process_Mysql.destroy();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
     	});
     	
     	//Tomcat Buttons
